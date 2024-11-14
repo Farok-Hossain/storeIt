@@ -149,7 +149,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
       </Form>
       {/* OTP VERIFICATION */}
 
-      {true && (
+      {accountId && (
         <OTPModal email={form.getValues("email")} accountId={accountId} />
       )}
     </>
