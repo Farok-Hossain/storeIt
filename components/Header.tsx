@@ -2,11 +2,18 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div>
-      <h1>Header</h1>
-    </div>
+    <header className="header">
+      Search
+      <div className="header-wrapper">
+        FileUpLoader
+        <form>
+          <Button type="submit" className="sign-out-button">
+            Submit
+          </Button>
+        </form>
+      </div>
+    </header>
   );
 };
 
 export default Header;
-<h1>Header</h1>;
