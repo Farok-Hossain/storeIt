@@ -9,4 +9,3 @@ const FileUploader = () => {
 };
 
 export default FileUploader;
-<h1>FileUploader</h1>;
