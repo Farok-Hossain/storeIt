@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
+import { cn, getFileType } from "@/lib/utils";
 import Image from "next/image";
 
 interface Porps {
