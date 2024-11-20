@@ -13,7 +13,7 @@ const handleError = (error: unknown, message: string) => {
   throw error;
 };
 
-export const upLoadFile = async ({
+export const uploadFile = async ({
   file,
   ownerId,
   accountId,
@@ -65,7 +65,7 @@ const createQueries = (currentUser: Models.Document) => {
   const queries = [
     Query.or([
       Query.equal("owner", [currentUser.$id]),
-      Query.equal("users", [currentUser.email]),
+      Query.contains("users", [currentUser.email]),
     ]),
   ];
 

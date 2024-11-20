@@ -10,7 +10,7 @@ import { MAX_FILE_SIZE } from "@/constants";
 
 import { useToast } from "@/hooks/use-toast";
 import { usePathname } from "next/navigation";
-import { upLoadFile } from "@/lib/actions/file.actions";
+import { uploadFile } from "@/lib/actions/file.actions";
 
 interface Porps {
   ownerId: string;
@@ -45,7 +45,7 @@ const FileUploader = ({ ownerId, accountId, className }: Porps) => {
           });
         }
 
-        return upLoadFile({ file, ownerId, accountId, path }).then(
+        return uploadFile({ file, ownerId, accountId, path }).then(
           (uploadedFile) => {
             if (uploadedFile) {
               setFiles((prevFiles) =>
