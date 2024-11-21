@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Models } from "node-appwrite";
 import React from "react";
 import Thumbnail from "./Thumbnail";
+import { convertFileSize } from "@/lib/utils";
+import FormattedDateTime from "./FormattedDateTime";
 
 const Card = ({ file }: { file: Models.Document }) => {
   return (
@@ -14,8 +16,20 @@ const Card = ({ file }: { file: Models.Document }) => {
           className="!size-20"
           imageClassName="!size-11"
         />
+
+        <div className="flex flex-col items-end justify-between">
+          ActionsDropdown ...
+          <p className="body-1">{convertFileSize(file.size)}</p>
+        </div>
       </div>
-      {file.name}
+
+      <div className="file-card-details">
+        <p className="subtitle-2 line-clamp-1">{file.name}</p>
+        <FormattedDateTime
+          date={file.$createdAt}
+          className="body-2 text-light-100"
+        />
+      </div>
     </Link>
   );
 };
