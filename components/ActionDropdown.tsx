@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import {
   DropdownMenu,
@@ -22,6 +22,10 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [action, setAction] = useState<ActionType | null>(null);
+
+  const renderDialogContent = () => {
+    return <DialogContent>Dialog</DialogContent>;
+  };
 
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -55,15 +59,36 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
                 }
               }}
             >
-              <Link
-                href={constructDownloadUrl(file.bucketFileId)}
-                download={file.name}
-                className="flex items-center gap-2"
-              />
+              {actionItem.value === "download" ? (
+                <Link
+                  href={constructDownloadUrl(file.bucketFileId)}
+                  download={file.name}
+                  className="flex items-center gap-2"
+                >
+                  <Image
+                    src={actionItem.icon}
+                    alt={actionItem.label}
+                    width={30}
+                    height={30}
+                  />
+                  {actionItem.label}
+                </Link>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={actionItem.icon}
+                    alt={actionItem.label}
+                    width={30}
+                    height={30}
+                  />
+                  {actionItem.label}
+                </div>
+              )}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+      {renderDialogContent()}
     </Dialog>
   );
 };
