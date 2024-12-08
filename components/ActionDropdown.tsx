@@ -34,6 +34,13 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [name, setName] = useState(file.name);
   const [isLoading, setIsLoading] = useState(false);
 
+  const closeAllModals = () => {
+    setIsModalOpen(false);
+    setIsDropdownOpen(false);
+    setAction(null);
+    setName(file.name);
+  };
+
   const renderDialogContent = () => {
     if (!action) return null;
 
